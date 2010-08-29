@@ -19,6 +19,9 @@ TinyTab Method: constructor {#TinyTab:constructor}
 
  - selected - (string) Class name to add on selected tab.
 
+### Events:
+
+ - change (content element, tab element) On tab changed.
 
 TinyTab Method: select {#TinyTab:select}
 ---------------------------------------------------
