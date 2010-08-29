@@ -16,15 +16,13 @@ provides: TinyTab
 */
 (function($) {
 	this.TinyTab = new Class({
-
+		Implements: Events,
 		initialize: function(tabs, contents, opt) {
 			this.tabs = tabs;
 			this.contents = contents;
 			if(!opt) opt = {};
 			this.css = opt.selectedClass || 'selected'; 
-
 			this.select(this.tabs[0]);
-
 			tabs.addEvent('click',function(e){
 				this.select(e.target);
 				e.stop();
@@ -35,7 +33,9 @@ provides: TinyTab
 			this.tabs.removeClass(this.css);
 			el.addClass(this.css);
 			this.contents.setStyle('display','none');
-			this.contents[this.tabs.indexOf(el)].setStyle('display','block');
+			var content = this.contents[this.tabs.indexOf(el)];
+			content.setStyle('display','block');
+			this.fireEvent('change',[content,el]);
 		}
 	});
 })(document.id);
