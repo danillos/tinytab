@@ -23,9 +23,11 @@ provides: TinyTab
 			if(!opt) opt = {};
 			this.css = opt.selectedClass || 'selected'; 
 			this.select(this.tabs[0]);
-			tabs.addEvent('click',function(e){
-				this.select(e.target);
-				e.stop();
+			tabs.each(function(el){
+				el.addEvent('click',function(e){
+					this.select(el);
+					e.stop();
+				}.bind(this));
 			}.bind(this));
 		},
 
